@@ -1,0 +1,4 @@
+dev.sqlite3
+node_modules
+dist
+.vscode
