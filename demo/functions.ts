@@ -1,6 +1,6 @@
 import { AttemptRepository } from "./attempt-repository";
 import { ScoreRepository } from "./score-repository";
-import { transactional } from "./transactional";
+import { transactional } from "../src";
 
 export class MyFunctions {
     constructor(private readonly scores: ScoreRepository, private readonly attempts: AttemptRepository) {}

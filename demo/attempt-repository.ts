@@ -1,4 +1,4 @@
-import { TransactionProvider, transactional } from "./transactional";
+import { TransactionProvider, transactional } from "../src";
 
 export class AttemptRepository {
     constructor(private readonly transactionProvider: TransactionProvider) {}

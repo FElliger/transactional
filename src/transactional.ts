@@ -1,9 +1,12 @@
 import { AsyncLocalStorage } from "async_hooks"
-import knex, { Knex } from "knex";
-import { config } from "../knexfile";
+import { Knex } from "knex";
 
-const db = knex(config.development)
+let db: Knex
 const localStorage = new AsyncLocalStorage();
+
+export function setKnexInstance(knex: Knex) {
+  db = knex;
+}
 
 export function transactional(originalMethod: any, context: ClassMethodDecoratorContext) {
   async function transactionalMethod(this: any, ...args: any[]) {

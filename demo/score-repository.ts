@@ -1,4 +1,4 @@
-import { TransactionProvider, transactional } from "./transactional";
+import { TransactionProvider, transactional } from "../src";
 
 export class ScoreRepository {
     constructor(private readonly transactionProvider: TransactionProvider) {}
@@ -15,7 +15,6 @@ export class ScoreRepository {
     async getScoreCount() {
         const result = await this.transactionProvider.getTransaction().count().from("scores");
         
-        console.log(result)
-        return (result as any)["count()"];
+        return (result as any)[0]["count(*)"];
     }
 }
