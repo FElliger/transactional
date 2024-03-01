@@ -1,12 +1,12 @@
 import { AttemptRepository } from "./attempt-repository";
 import { MyFunctions } from "./functions"
 import { ScoreRepository } from "./score-repository";
-import { TransactionProvider, setKnexInstance } from "../src";
+import { TransactionProvider, configure } from "../src";
 import knex from "knex";
 import config from "../knexfile";
 
 const knexInstance = knex(config.development)
-setKnexInstance(knexInstance)
+configure(knexInstance)
 
 const transactionProvider = new TransactionProvider();
 const scores = new ScoreRepository(transactionProvider);

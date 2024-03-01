@@ -1,10 +1,14 @@
 import { AsyncLocalStorage } from "async_hooks"
 import { Knex } from "knex";
 
-let db: Knex
+type KnexTransactionProvider = {
+  transaction: () => ReturnType<Knex["transaction"]>
+}
+
+let db: KnexTransactionProvider
 const localStorage = new AsyncLocalStorage();
 
-export function setKnexInstance(knex: Knex) {
+export function configure(knex: KnexTransactionProvider) {
   db = knex;
 }
 
