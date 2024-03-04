@@ -4,7 +4,7 @@
   "description": "Transactional decorator providing a transaction context using Knex",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --runInBand",
     "build": "tsc",
     "format:check": "prettier . --check",
     "format:write": "prettier . --write",

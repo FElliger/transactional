@@ -31,6 +31,7 @@ export function transactional(originalMethod: any, context: ClassMethodDecorator
               console.log("Rolling back...");
               await transaction.rollback();
             }
+            throw error;
           }
 
           try {

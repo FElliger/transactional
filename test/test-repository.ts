@@ -30,6 +30,14 @@ export class TestRepository {
     await this.simpleInsertTableTwo();
   }
 
+  @transactional
+  async combinedInsertWithBadInsert(): Promise<void> {
+    await this.combinedInsert();
+
+    const transaction = this.transactionProvider.getTransaction();
+    await transaction.insert({ data: "some_data" }).into("nonexistent");
+  }
+
   forceError() {
     throw new Error("This is a forced error!");
   }

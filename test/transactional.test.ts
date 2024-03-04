@@ -99,7 +99,7 @@ describe("transactional", () => {
   });
 
   it("rolls back the transaction if an error occurs", async () => {
-    await repository.combinedInsertWithError();
+    await expect(repository.combinedInsertWithError()).rejects.toThrow();
 
     expect(fakeDb.entries.length).toBe(0);
     expect(fakeDb.transactions[0].status).toBe("rolled-back");
